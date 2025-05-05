@@ -1,4 +1,4 @@
-# 📚 Literature Review Automation – Master's Dissertation Project
+# Literature Review
 
 ## Project Overview
 
