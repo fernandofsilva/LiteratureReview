@@ -1,4 +1,4 @@
-from typing import List, Dict, Any
+from typing import List, Dict
 from dotenv import load_dotenv, find_dotenv
 from pydantic import BaseModel
 from openai import OpenAI
@@ -10,26 +10,19 @@ _ = load_dotenv(find_dotenv())
 client = OpenAI(api_key=os.environ['OPENAI_API_KEY'])
 
 system_content = """
-You are Phd professor working in a literature review for your research, you need to analise the abstracts and classify it according with the criteria below, you can classify with more than one criteria:
+### CONTEXT ###
+You are Phd professor working in a literature review for your research, you need to analyze an article's abstract and determine whether it matches your research topic. The research aims to investigate how small and medium-sized enterprises (SMEs) are using artificial intelligence (AI), machine-learning (ML), Deep Learning (DL), Artificial Neural Networks (ANN) or Neural Network (NN) in their operations. The research seeks to identify the benefits, challenges, and best practices related to the adoption and use of this technologies, with the goal of understanding the influence of this technology on organizational performance and company competitiveness.
 
-criteria 1: Studies focused on the adoption, implementation, or use of AI (Artificial Intelligence).
-criteria 2: Studies focused in small and medium-sized enterprises (SMEs). 
-criteria 3: Studies focused only on AI as a technical innovation with no managerial or strategic dimension.
-criteria 4: Studies focusing on AI in large corporations.
+Abstract:
+“{article_abstract}”
+
+### OBJECTIVE & RESPONSE FORMAT ###
+Your objective is to determine whether an article is related to your research and answer with the reason it should be part of your literature review, the reason must be short and directly. 
 """
 
-system = {
-    "role": "system",
-    "content": system_content
-}
-
-
 class UserFormat(BaseModel):
-    criteria_1: bool
-    criteria_2: bool
-    criteria_3: bool
-    criteria_4: bool
-
+    match: bool
+    reason: str
 
 def read_csv(file_path: str) -> List[Dict[str, str]]:
     """
@@ -84,7 +77,7 @@ def parse_notes_field(articles: List[Dict[str, str]]) -> None:
                 article['notes'] = ''
 
 def get_completion_from_messages(messages: List[Dict[str, str]],
-                                 model="gpt-4.1-mini",
+                                 model="gpt-5-mini",
                                  temperature=0) -> str:
     """
     Generates a response from an OpenAI language model based on a conversation history.
@@ -97,7 +90,7 @@ def get_completion_from_messages(messages: List[Dict[str, str]],
                 - 'content' (str): The content of the message for that role.
         model (str, optional):
             The name of the model to use for generating the response.
-            Defaults to "gpt-4.1-mini".
+            Defaults to "gpt-5-mini".
         temperature (float, optional):
             The sampling temperature to use for response generation.
             Higher values (e.g., 0.8) produce more creative and diverse outputs, while lower values (e.g., 0.2) produce more deterministic results.
@@ -160,7 +153,7 @@ def save_csv(data: List[Dict[str, str]], filename: str) -> None:
 def main():
 
     # Read articles
-    articles = read_csv('articles.csv')
+    articles = read_csv('data/articles.csv')
 
     # Parte Nodes field
     parse_notes_field(articles)
@@ -176,8 +169,10 @@ def main():
 
         articles[index] = {**article, **user.model_dump(mode='json')}
 
+        print(index)
+
     # Save file to articles to .csv
-    save_csv(data=articles, filename='articles_new.csv')
+    save_csv(data=articles, filename='data/articles_new.csv')
 
 
 if __name__ == "__main__":

@@ -1,0 +1,125 @@
+Scopus
+
+IA = 1,806,248
+SME = 15,030
+ECT = 7,951
+IA + SME = 368
+IA + ECT = 140
+SME + ECT = 0
+IA + SME + ECT = 0
+
+(
+    TITLE ( “artificial intelligence” ) OR KEY ( ”artificial intelligence” ) OR
+    TITLE ( “AI” ) OR KEY ( ”AI” ) OR
+    TITLE ( “Machine Learning” ) OR KEY ( ”Machine Learning” ) OR
+    TITLE ( “ML” ) OR KEY ( ”ML” ) OR
+    TITLE ( “Deep Learning” ) OR KEY ( ”Deep Learning” ) OR
+    TITLE ( “DL” ) OR KEY ( ”DL” ) OR
+    TITLE ( “Artificial Neural Networks” ) OR KEY ( ”Artificial Neural Networks” ) OR
+    TITLE ( “ANN” ) OR KEY ( ”ANN” )
+)
+
+AND
+
+(
+    TITLE ( “SME” ) OR KEY ( ”SME” ) OR
+    TITLE ( “small medium enterprise” ) OR KEY ( “small medium enterprise” ) OR
+    TITLE ( “SMB” ) OR KEY ( ”SMB” ) OR
+    TITLE ( “small medium business” ) OR KEY ( “small medium business” )
+)
+
+AND
+
+(
+    TITLE ( “Expectation Confirmation Theory” ) OR KEY ( ”Expectation Confirmation Theory” ) OR
+    TITLE ( “ECT” ) OR KEY ( ”ECT” )
+)
+
+
+
+Web of Science
+
+IA = 4,704,522
+SME = 46,364
+ECT = 29,015
+IA + SME = 1,997
+IA + ECT = 1,040
+SME + ECT = 8
+IA + SME + ECT = 0
+
+(
+    TS=( “artificial intelligence” ) OR AK=( ”artificial intelligence” ) OR
+    TS=( “AI” ) OR AK=( ”AI” ) OR
+    TS=( “Machine Learning” ) OR AK=( ”Machine Learning” ) OR
+    TS=( “ML” ) OR AK=( ”ML” ) OR
+    TS=( “Deep Learning” ) OR AK=( ”Deep Learning” ) OR
+    TS=( “DL” ) OR AK=( ”DL” ) OR
+    TS=( “Artificial Neural Networks” ) OR AK=( ”Artificial Neural Networks” ) OR
+    TS=( “ANN” ) OR AK=( ”ANN” )
+)
+
+AND
+
+(
+    TS=( “SME” ) OR AK=( ”SME” ) OR
+    TS=( “small medium enterprise” ) OR AK=( “small medium enterprise” ) OR
+    TS=( “SMB” ) OR AK=( ”SMB” ) OR
+    TS=( “small medium business” ) OR AK=( “small medium business” )
+)
+
+AND
+
+(
+    TS=( “Expectation Confirmation Theory” ) OR AK=( ”Expectation Confirmation Theory” ) OR
+    TS=( “ECT” ) OR AK=( ”ECT” )
+)
+
+
+EBSCO
+
+IA = 100,716
+SME = 8,208
+ECT = 497
+IA + SME = 51
+IA + ECT = 13
+SME + ECT = 1,156
+IA + SME + ECT = 0
+
+(
+    TI  “artificial intelligence” OR KW ”artificial intelligence” OR
+    TI  “AI” OR KW ”AI” OR
+    TI  “Machine Learning” OR KW ”Machine Learning” OR
+    TI  “ML” OR KW ”ML” OR
+    TI  “Deep Learning” OR KW ”Deep Learning” OR
+    TI  “DL” OR KW ”DL” OR
+    TI  “Artificial Neural Networks” OR KW ”Artificial Neural Networks” OR
+    TI  “ANN” OR KW ”ANN”
+)
+
+AND
+
+(
+    TI  “SME” OR KW ”SME” OR
+    TI  “small medium enterprise” OR KW “small medium enterprise” OR
+    TI  “SMB” OR KW ”SMB” OR
+    TI  “small medium business” OR KW “small medium business”
+)
+
+AND
+
+(
+    TI  “Expectation Confirmation Theory” OR KW ”Expectation Confirmation Theory” OR
+    TI  “ECT” OR KW ”ECT”
+)
+
+
+"""
+### CONTEXT ###
+You are Phd professor working in a literature review for your research, you need to analyze an article's abstract and determine whether it matches your research topic. The research aims to investigate how small and medium-sized enterprises (SMEs) are using artificial intelligence (AI) or traditional machine-learning in their operations. The research seeks to identify the benefits, challenges, and best practices related to the adoption of artificial intelligence, with the goal of understanding the influence of this technology on organizational performance and company competitiveness, as perceived by managers.
+
+Abstract:
+“{article_abstract}”
+
+### OBJECTIVE & RESPONSE FORMAT ###
+Your objective is to determine whether an article is related to your research and answer with the reason it should be part of your literature review.
+"""
