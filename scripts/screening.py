@@ -77,7 +77,7 @@ def parse_notes_field(articles: List[Dict[str, str]]) -> None:
                 article['notes'] = ''
 
 def get_completion_from_messages(messages: List[Dict[str, str]],
-                                 model="gpt-5-mini",
+                                 model="gpt-4.1-mini",
                                  temperature=0) -> str:
     """
     Generates a response from an OpenAI language model based on a conversation history.
@@ -158,21 +158,25 @@ def main():
     # Parte Nodes field
     parse_notes_field(articles)
 
+    # Set model
+    model = "gpt-4.1-mini"
+
     # Loop over the articles
     for index, article in enumerate(articles):
 
         # Create new criteria field in the dict
         user = get_completion_from_messages(
             messages=[{"role": "system", "content": system_content},
-                      {"role": "user", "content": "Abstract: {}".format(article['abstract'])}]
+                      {"role": "user", "content": "Abstract: {}".format(article['abstract'])}],
+            model=model
         )
 
         articles[index] = {**article, **user.model_dump(mode='json')}
 
-        print(index)
+        print(f"Article number {index}, percentage conclusion {index/len(articles)*100:.2f}%")
 
     # Save file to articles to .csv
-    save_csv(data=articles, filename='data/articles_new.csv')
+    save_csv(data=articles, filename=f'data/articles_{model}.csv')
 
 
 if __name__ == "__main__":
