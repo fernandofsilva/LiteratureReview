@@ -4,8 +4,7 @@
 
 This project supports the master's dissertation titled:
 
-**“Inteligência Artificial como Motor de Competitividade em Pequenas e Médias Empresas: Automatização, Personalização e Tomada de Decisão”**  
-by **Fernando Ferreira da Silva**, under the guidance of **Prof. Adrian Kemmer Cernev**  
+**“Inteligência Artificial como Motor de Competitividade em Pequenas e Médias Empresas: Automatização, Personalização e Tomada de Decisão”** by **Fernando Ferreira da Silva**, under the guidance of **Prof. Adrian Kemmer Cernev**  
 (FGV EAESP – Line of Research: Operations and Innovation)
 
 The dissertation investigates how small and medium enterprises (SMEs) are adopting artificial intelligence (AI) to enhance their operational efficiency and competitiveness. To assist in this research, this project automates the analysis and categorization of academic abstracts related to AI adoption using OpenAI’s language models.
